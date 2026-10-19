@@ -128,20 +128,18 @@ a {
 .eyebrow { 
     display: flex;
     align-items: center;
-    gap: 9px;
+    gap: 12px;
     margin: 0;
     color: #777970;
     font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .15em;
     line-height: 1.5;
 }
  
-.status-dot { 
-    width: 7px;
-    height: 7px;
+.status-arrow { 
     border-radius: 50%;
     background: #9bad43;
+    padding:4px; 
+    color:white;
     box-shadow: 0 0 0 4px rgba(155,173,67,.13);
 }
 
@@ -151,7 +149,7 @@ h1,h2,h3,p {
  
 .hero-copy h1,.page-heading h1 { 
     margin: 26px 0 22px;
-    font-size: clamp(52px, 7.4vw, 94px);
+    font-size: clamp(52px, 6.4vw, 94px);
     font-weight: 500;
     letter-spacing: -.075em;
     line-height: .98;
@@ -218,24 +216,14 @@ h1,h2,h3,p {
     background: #dfe3cd;
 }
 
-.card-topline { 
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: space-between;
-    color: #606451;
-    font-size: 8px;
-    letter-spacing: .12em;
-}
- 
  .portrait-mark { 
     position: absolute;
-    inset: 9% 7% 8%;
+    inset: 0% 7% 8%;
     display: grid;
     place-items: center;
     color: #65704a;
     font-family: var(--font-display), Georgia, serif;
-    font-size: clamp(200px,34vw,365px);
+    font-size: clamp(260px,34vw,365px);
     line-height: 1;
     letter-spacing: -.16em;
  }
@@ -278,22 +266,6 @@ h1,h2,h3,p {
     place-items: center;
     border: 1px solid rgba(32,35,31,.28);
     border-radius: 50%;
-}
- 
-.card-stamp { 
-    position: absolute;
-    top: 34%;
-    right: 9%;
-    color: rgba(32,35,31,.45);
-    font-size: 8px;
-    letter-spacing: .13em;
-    line-height: 1.8;
-    text-align: center;
-    transform: rotate(8deg);
-}
-
-.card-stamp span { 
-    font-size: 15px;
 }
 
 .section-rule { 
@@ -352,6 +324,7 @@ h1,h2,h3,p {
     align-items: center;
     min-height: 67px;
     border-bottom: 1px solid var(--line);
+    padding:2rem;
 }
 
 .row-index { 
@@ -359,11 +332,18 @@ h1,h2,h3,p {
     font-size: 9px;
 }
 
-.capability-row h3 { 
+.capability-row div h3 { 
     margin: 0;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: -.025em;
+}
+
+.capability-row div p { 
+    margin: 0;
+    color: #6b6e65;
+    font-size: 13px;
+    line-height: 1.85;
 }
 
 .row-icon { 
@@ -375,6 +355,7 @@ h1,h2,h3,p {
     min-height: 300px;
     display: flex;
     align-items: center;
+    gap:.55em;
     justify-content: space-between;
     padding: 45px 8%;
     overflow: hidden;
@@ -397,14 +378,14 @@ h1,h2,h3,p {
     border-radius: 50%;
     background: var(--ink);
     color: white;
+    aspect-ratio: 1/1;
 }
 
 .contact-note { 
-    align-self: end;
     color: #777970;
-    font-size: 8px;
-    letter-spacing: .13em;
+    font-size: clamp(12px, .5vw, 5px);
     line-height: 1.7;
+    margin-top: 10px;
 }
 
 .site-footer { 
@@ -420,20 +401,35 @@ h1,h2,h3,p {
 
 .site-footer > a { 
     color: #666960;
+    font-size: 12px;
 }
 
-.social-links { 
+.social-media {
     display: flex;
-    gap: 14px;
+    gap:10px;
+    justify-content: end;
+    align-items: center;
+    height: 100%;
 }
 
-.social-links a { 
-    display: flex;
-    transition: color .2s;
+.social-media li{
+    height: .75rem;
+    width: .75rem;
+    font-size: 12px;
 }
 
-.social-links a:hover { 
-    color: #899943;
+.social-media a svg:hover { 
+    color:var(--accent);
+    box-shadow: 0 0 0 4px rgba(155,173,67,.13);
+}
+
+.social-media a svg { 
+    box-sizing:border-box;
+    width: 100%;
+    height:100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    transition: color .1s ease-in-out;
 }
 
 .page-heading { 
@@ -464,20 +460,15 @@ h1,h2,h3,p {
     gap: 62px 24px;
 }
 
-.project-item:first-child, .project-item:nth-child(4) { 
-    grid-column: span 2;
-}
-
 .project-art { 
     position: relative;
-    min-height: 340px;
     display: grid;
     place-items: center;
     overflow: hidden;
 }
 
-.project-item:first-child .project-art { 
-    min-height: 450px;
+.project-item:first-child{
+    grid-column: 1 / -1;
 }
 
 .project-art:first-child { 
@@ -499,6 +490,13 @@ h1,h2,h3,p {
     font-size: 8px;
     letter-spacing: .14em;
     color: rgba(32,35,31,.55);
+}
+
+.project-art-image{
+    height: 100%;
+    width:100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .project-art-number { 
@@ -543,14 +541,18 @@ h1,h2,h3,p {
     font-size: 20px;
     font-weight: 500;
     letter-spacing: -.04em;
+    text-decoration: underline;
 }
 
 .project-description { 
-    max-width: 475px;
     margin-bottom: 14px;
     color: #70736a;
     font-size: 11px;
     line-height: 1.7;
+}
+
+.project-item:not(:first-child) .project-description { 
+    max-width: 475px;
 }
 
 .tag-list { 
@@ -568,7 +570,7 @@ h1,h2,h3,p {
     cursor:pointer;
     overflow: hidden;
     position: relative;
-    transition: color .3s ease, border-color .3s ease;
+    transition: color .3s ease;
     z-index: 1;
 }
 
@@ -583,7 +585,7 @@ h1,h2,h3,p {
     z-index: -1;
 
     /* Mulai dari ukuran 0 di sebelah kiri */
-    transform: scaleX(0);
+    transform: scaleX(0) scaleX(0);
     transform-origin: left;
     transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
@@ -591,12 +593,11 @@ h1,h2,h3,p {
 /* Efek saat Hover */
 .tag-list span:hover, .skill-cloud span:hover {
     color: #ffffff; /* Ubah warna teks jadi putih */
-    border-color: #111111;
 }
 
 .tag-list span:hover::before, .skill-cloud span:hover::before {
     /* Lebarkan background ke kanan penuh */
-    transform: scaleX(1);
+    transform: scaleX(1) scaleY(2);
 }
 
 .project-link { 
@@ -796,7 +797,8 @@ h1,h2,h3,p {
     }
 
     .hero-copy h1 { 
-        font-size: clamp(56px, 12vw, 80px);
+        font-size: clamp(50px, 12vw, 72px);
+        line-height: 1.1;
     }
 
     .hero-intro { 
@@ -809,7 +811,7 @@ h1,h2,h3,p {
     }
 
     .portrait-mark { 
-        font-size: 280px;
+        font-size: 320px;
     }
 
     .intro-section { 
@@ -823,7 +825,7 @@ h1,h2,h3,p {
     }
 
     .intro-content h2 { 
-        font-size: 43px;
+        font-size: 40px;
     }
 
     .intro-body p { 
@@ -850,7 +852,8 @@ h1,h2,h3,p {
     }
 
     .contact-panel h2 { 
-        font-size: 54px;
+        font-size: clamp(28px, 3vw, 55px);
+        line-height: 1.15;
     }
 
     .contact-circle { 
@@ -859,7 +862,9 @@ h1,h2,h3,p {
     }
 
     .contact-note { 
-        display: none;
+        margin-top: 1.5em;
+        letter-spacing: .01em;
+        font-size: 10px;
     }
 
     .site-footer { 
@@ -890,13 +895,8 @@ h1,h2,h3,p {
         gap: 40px;
     }
 
-    .project-item:first-child
-    .project-item:nth-child(4) { 
-        grid-column: auto;
-    }
-
-    .project-art,.project-item:first-child .project-art { 
-        min-height: 310px;
+    .project-art { 
+        min-height: 180px;
     }
 
     .project-art-mark { 

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import SocialMedia from './SocialMedia';
 
 const navItems = [
   { name: 'Profile', path: '/profile' },
@@ -31,7 +32,7 @@ export default function Header() {
             )
           })}
         </nav>
-        <a className="header-contact" href="mailto:hello@angga.dev">Let’s talk <span>↗</span></a>
+        <SocialMedia />
       </div>
     </header>
   );

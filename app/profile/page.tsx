@@ -1,10 +1,23 @@
 'use client';
 import Link from 'next/link';
-import { ArrowDownRight, ArrowUpRight, Mail } from 'lucide-react';
-import { motion, Variants } from 'framer-motion';
+import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../../lib/animation';
 
-const capabilities = ['Product-minded development', 'Frontend engineering', 'Full-stack applications', 'Thoughtful interaction design'];
+const capabilities = [
+  {
+    title: 'Full-Stack Web Development',
+    description: 'Building end-to-end web applications using Laravel, React, and Next.js with clean, maintainable architecture.' 
+  }, {
+    title: 'Modern Frontend & Performance',
+    description: 'Crafting responsive, accessible, and fast user interfaces using Tailwind CSS and TypeScript with a heavy focus on UX details.'
+  }, {
+    title: 'CMS & Tailored Web Solutions',
+    description: 'Developing custom WordPress themes and headless solutions tailored for scalability, marketing efficiency, and client autonomy.'
+  }, {
+    title: 'Technical Ownership & Integration',
+    description: 'Designing APIs, managing databases (PostgreSQL/MySQL), and optimizing web performance for maximum output.'
+  }];
 
 export default function ProfilePage() {
   return (
@@ -16,18 +29,21 @@ export default function ProfilePage() {
         variants={containerVariants}
       >
         <motion.div className="hero-copy" variants={itemVariants}>
-          <motion.p className="eyebrow" variants={itemVariants}>
-            <span className="status-dot" /> AVAILABLE FOR SELECT PROJECTS
-          </motion.p>
+          <motion.div className="eyebrow" variants={itemVariants}>
+            <div className="status-arrow" >
+              <ArrowUpRight size={12} />
+            </div> 
+            OPEN FOR OPPORTUNITIES
+          </motion.div>
           <motion.h1 variants={itemVariants}>
-            Building digital<br />things with <em>purpose.</em>
+            Web developer building products people <em> love to use.</em>
           </motion.h1>
           <motion.p variants={itemVariants} className="hero-intro">
-            I’m Angga, a web developer turning thoughtful ideas into fast, useful, and lasting digital experiences.
+            Hi, I’m Angga. A full-stack web developer crafting fast, scalable, and intuitive digital solutions. I bridge the gap between solid code and great user experience.
           </motion.p>
           <motion.div variants={itemVariants} className="hero-actions">
             <Link className="button button-dark" href="/portfolio">Explore my work <ArrowUpRight size={16} /></Link>
-            <a className="text-link" href="mailto:hello@angga.dev">Let’s talk <ArrowUpRight size={15} /></a>
+            <a className="text-link" href="mailto:angga.rahayudiputra98@gmail.com">Let’s talk <ArrowUpRight size={15} /></a>
           </motion.div>
         </motion.div>
         
@@ -37,22 +53,15 @@ export default function ProfilePage() {
           variants={itemVariants}
           whileHover={{y:-5, transition: {duration: 0.3}}}
         >
-          <div className="card-topline">
-            <span>INDEPENDENT DEVELOPER</span>
-            <span>01 / 03</span>
-          </div>
           <div className="portrait-mark">A<span>.</span></div>
           <div className="card-caption">
             <div>
-              <strong>Angga R.</strong>
+              <strong>Angga Rahayudiputra</strong>
               <span>Web Developer · Indonesia</span>
             </div>
             <span className="card-arrow">
               <ArrowUpRight size={18} />
               </span>
-          </div>
-          <div className="card-stamp">
-            DESIGN<br />THINKING<br /><span>×</span><br />ENGINEERING
           </div>
         </motion.aside>
       </motion.section>
@@ -61,7 +70,6 @@ export default function ProfilePage() {
         className="intro-section section-rule"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3, margin: "-100px" }}
         variants={itemVariants}
       >
         <motion.p variants={itemVariants} className="eyebrow">
@@ -70,11 +78,11 @@ export default function ProfilePage() {
 
         <div className="intro-content">
           <motion.h2 variants={itemVariants}>
-            Good work lives<br />at the intersection of<br /><em>clarity and craft.</em>
+            Building products <br /> with <em>user experience <br /></em>at the core.
           </motion.h2>
           <motion.div variants={itemVariants} className="intro-body">
             <motion.p variants={itemVariants}>
-              I work across the stack, with a special interest in making complex products feel simple. From the first sketch to the final line of code, I care about the details that make an experience feel effortless.
+              As a full-stack developer, my goal is to transform intricate product logic into smooth, user-friendly experiences. I bridge backend efficiency with clean frontend implementation, ensuring every detail serves a clear purpose for the people using the application.
             </motion.p>
             <motion.p variants={itemVariants}>
               My toolkit includes React, Next.js, Laravel, and WordPress. More importantly, I bring curiosity, clear communication, and a steady focus on the people using what I build.
@@ -92,23 +100,25 @@ export default function ProfilePage() {
         className="capabilities-section section-rule"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3, margin: "-100px" }}
       >
-        <motion.p variants={itemVariants} className="eyebrow">WHAT I BRING</motion.p>
+        <motion.p variants={itemVariants} className="eyebrow">WHAT I DO</motion.p>
         <motion.div variants={containerVariants} className="capability-list">
           {capabilities.map((item, index) => {
             return(
               <motion.div 
                 variants={itemVariants} 
                 className="capability-row" 
-                key={item} 
+                key={item.title} 
                 aria-label={`Capability ${index + 1}: ${item}`}
                 whileHover={{x:8, transition: {duration: 0.3, ease: 'easeOut'}}}
               >
                 <span className="row-index">
                   0{index + 1}
                 </span>
-                <h3>{item}</h3>
+                <div>
+                  <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                </div>
                 <motion.div
                   variants={{
                     initial: { y: 0, x: 0 },
@@ -131,8 +141,9 @@ export default function ProfilePage() {
         variants={containerVariants}
       >
         <motion.div variants={itemVariants}>
-          <p className="eyebrow">HAVE SOMETHING IN MIND?</p>
-          <h2>Let’s make it<br /><em>matter.</em></h2>
+          <p className="eyebrow">LET’S CONNECT</p>
+          <h2>Have a project in mind, <br />or looking to add to <em>your team? </em></h2>
+          <p className="contact-note">Good ideas start with a simple conversation. Feel free to reach out for collaborations or full-time opportunities.</p>
         </motion.div>
         <motion.a 
           className="contact-circle" 
@@ -148,7 +159,6 @@ export default function ProfilePage() {
         >
           <ArrowUpRight size={27} />
         </motion.a>
-        <span className="contact-note">GOOD IDEAS START<br />WITH A CONVERSATION.</span>
       </motion.section>
     </>
   );

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import { Link } from "lucide-react";
+import Footer from "@/components/Footer";
 
 const dmSans = DM_Sans({
   variable: "--font-sans",
@@ -15,8 +15,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Angga R. — Independent Web Developer",
-  description: "Thoughtful digital experiences, built with purpose. Explore the selected work and experience of Angga R.",
+  title: "Angga Rahayudiputra. — Web Developer",
+  description: "Thoughtful digital experiences, built with purpose. Explore the selected work and experience of Angga Rahayudiputra.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -31,11 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">
           <div className="page-shell">
             {children}
-            <footer className="site-footer">
-              <span>© 2026 ANGGA R.</span>
-              <span>DESIGNED WITH INTENTION · BUILT WITH CARE</span>
-              <Link href="/profile">BACK TO PROFILE ↑</Link>
-            </footer>
+            <Footer />
           </div>
 
         </main>
