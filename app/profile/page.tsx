@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../../lib/animation';
+import SocialMedia from '@/components/SocialMedia';
 
 const capabilities = [
   {
@@ -59,9 +60,7 @@ export default function ProfilePage() {
               <strong>Angga Rahayudiputra</strong>
               <span>Web Developer · Indonesia</span>
             </div>
-            <span className="card-arrow">
-              <ArrowUpRight size={18} />
-              </span>
+            <SocialMedia />
           </div>
         </motion.aside>
       </motion.section>

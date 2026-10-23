@@ -259,14 +259,6 @@ h1,h2,h3,p {
     font-size: 9px;
 }
 
-.card-arrow { 
-    display: grid;
-    width: 32px;
-    height: 32px;
-    place-items: center;
-    border: 1px solid rgba(32,35,31,.28);
-    border-radius: 50%;
-}
 
 .section-rule { 
     border-top: 1px solid var(--line);
@@ -430,6 +422,14 @@ h1,h2,h3,p {
     aspect-ratio: 1/1;
     border-radius: 50%;
     transition: color .1s ease-in-out;
+}
+
+.social-media li:first-child a svg { 
+    color:black;
+}
+
+.social-media li:nth-child(2) a svg { 
+    color:#ea4c89;
 }
 
 .page-heading { 
