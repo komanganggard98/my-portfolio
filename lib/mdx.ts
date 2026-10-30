@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 
 // Lokasi folder penyimpanan file .mdx
 const projectsDirectory = path.join(process.cwd(), 'content/projects');
+const designsDirectory = path.join(process.cwd(), 'content/designs');
 const experiencesDirectory = path.join(process.cwd(), 'content/experiences');
 
 export interface ProjectMetadata {
@@ -13,6 +14,13 @@ export interface ProjectMetadata {
   summary: string;
   category: string;
   techStack: string[];
+  liveUrl?: string;
+  featuredImage?: string;
+}
+
+export interface DesignMetadata {
+  title: string;
+  slug: string;
   liveUrl?: string;
   featuredImage?: string;
 }
@@ -72,6 +80,30 @@ export function getProjectBySlug(slug: string) {
     },
     content, // Isinya adalah teks Markdown / MDX murni
   };
+}
+
+// 1. Fungsi untk mengabil semua metadata design
+export function getAllDesigns(): DesignMetadata[] {
+  if(!fs.existsSync(designsDirectory)) return []
+
+  const fileNames = fs.readdirSync(designsDirectory)
+
+  const allDesigns =  fileNames
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map((fileName) => {
+      const slug = fileName.replace(/\.mdx$/, '')
+      const fullPath = path.join(designsDirectory, fileName)
+      const fileContents = fs.readFileSync(fullPath, 'utf-8')
+
+      const {data} = matter(fileContents)
+
+      return{
+        slug,
+        ...(data as Omit<DesignMetadata, 'slug'>)
+      }
+    })
+
+  return allDesigns
 }
 
 // 1. Fungsi untuk mengambil SEMUA metadata proyek (untuk halaman daftar / card)

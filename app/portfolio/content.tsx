@@ -2,11 +2,12 @@
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { arrowVariants, containerVariants, itemVariants } from '../../lib/animation';
-import { ProjectMetadata } from '@/lib/mdx';
+import { ProjectMetadata, DesignMetadata } from '@/lib/mdx';
 import ProjectList from '@/components/ProjectList';
+import DesignList from '@/components/DesignList';
 
 
-export default function Content({projects}: {projects: ProjectMetadata[]}) {
+export default function Content({projects, designs}: {projects: ProjectMetadata[], designs:DesignMetadata[]}) {
   return (
     <>
       <motion.section 
@@ -42,6 +43,35 @@ export default function Content({projects}: {projects: ProjectMetadata[]}) {
             <ProjectList project={{...project, number: index + 1}} key={project.slug} />
           )
         })}
+      </section>
+
+      <section className="designs-section" id="designs" aria-labelledby="designs-title">
+        <motion.div
+          className="designs-heading"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          <motion.p variants={itemVariants} className="eyebrow">SELECTED DESIGN · 2026</motion.p>
+          <motion.h2 variants={itemVariants} id="designs-title">
+            Thoughtful details,<br />made <em>visual.</em>
+          </motion.h2>
+          <motion.div variants={itemVariants} className="designs-intro">
+            <p className="designs-intro">
+              A collection of visual explorations and digital experiences, shaped around clarity, character, and the people who use them.
+            </p>
+            <a href="https://dribbble.com/anggarahayudiputra" target="_blank" className="underlined-link">
+              More about my design <ArrowUpRight size={15} />
+            </a>
+          </motion.div>
+        </motion.div>
+
+        <div className="design-list">
+          {designs.map((design: DesignMetadata) => (
+            <DesignList design={design} key={design.slug} />
+          ))}
+        </div>
       </section>
       
       <motion.section 
